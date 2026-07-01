@@ -1,9 +1,58 @@
-<!-- In HTML Comments are written like this -->
-<!-- They can all be removed for your apps -->
-<!doctype html> <!-- This first line tells browsers to expect modern standard html 5 -->
-<html lang="en-gb"> <!-- This is indicates the page is written in British English, useful for accessibility -->
-<meta charset="utf-8"> <!-- This indicates how the file is encoded. utf-8 is standard -->
-<title>Your Web-app Title</title> <!-- All pages need a title, this will be displayed in the browser's title bar -->
-<link rel="stylesheet" href="default.css"> <!-- Import style sheet – default.css -->
-<link rel="icon" href="./assets/favicon.png"> <!-- Import 'Favorites Icon' – favicon.png -->
-<script type="module" src="main.js"></script> <!-- Load the main script. Must be type="module". Have only one of these -->
+<!doctype html>
+<html lang="en-gb">
+<meta charset="utf-8">
+<title>Azul</title>
+<link rel="stylesheet" href="default.css">
+<script type="module" src="main.js"></script>
+
+<header>
+    <h1 id="title">Azul</h1>
+</header>
+
+<main>
+    <section id="factories_area" aria-label="Factory displays and centre pool">
+        <div id="factories"></div>
+        <div id="centre_area">
+            <h2>Centre</h2>
+            <div id="centre"></div>
+        </div>
+    </section>
+    <p id="turn_indicator" aria-live="polite"></p>
+</main>
+
+<aside id="player0_sidebar" class="sidebar" aria-label="Player 1 board">
+    <div class="player_name_row">
+        <input id="player0_name" aria-label="Player 1 name" value="Player 1">
+        <span class="score_label">Score: <strong id="player0_score">0</strong></span>
+    </div>
+    <div class="board_area">
+        <div class="pattern_lines" id="player0_pattern" aria-label="Player 1 pattern lines"></div>
+        <div class="wall_grid" id="player0_wall" aria-label="Player 1 wall"></div>
+    </div>
+    <div class="floor_area">
+        <h3>Floor</h3>
+        <div class="floor_line" id="player0_floor" aria-label="Player 1 floor line"></div>
+    </div>
+</aside>
+
+<aside id="player1_sidebar" class="sidebar" aria-label="Player 2 board">
+    <div class="player_name_row">
+        <input id="player1_name" aria-label="Player 2 name" value="Player 2">
+        <span class="score_label">Score: <strong id="player1_score">0</strong></span>
+    </div>
+    <div class="board_area">
+        <div class="pattern_lines" id="player1_pattern" aria-label="Player 2 pattern lines"></div>
+        <div class="wall_grid" id="player1_wall" aria-label="Player 2 wall"></div>
+    </div>
+    <div class="floor_area">
+        <h3>Floor</h3>
+        <div class="floor_line" id="player1_floor" aria-label="Player 2 floor line"></div>
+    </div>
+</aside>
+
+<dialog id="result_dialog" tabindex="0" aria-label="Game over">
+    <h2>Game Over</h2>
+    <p id="result_message"></p>
+    <p id="result_scores"></p>
+    <button id="play_again_btn" autofocus>Play Again</button>
+</dialog>

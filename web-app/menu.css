@@ -1,0 +1,247 @@
+:root
+{
+    --bg: #dde2e6;
+    --btn-bg: #7f96a2;
+    --btn-hover: #6a8290;
+    --btn-text: #1a1a2a;
+    --logo-colour: #1e3050;
+    --text: #2a2a3a;
+    --text-muted: #556070;
+    --back-colour: #556070;
+    --content-bg: #e8ecef;
+    --rule-border: #c0cad0;
+
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background: var(--bg);
+    min-height: 100vh;
+}
+
+/* ------------------------------------------------------------------- Logo */
+
+.logo
+{
+    color: var(--logo-colour);
+    font-size: 4.5rem;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+}
+
+.logo.small
+{
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------------------------- Menu screen */
+
+.menu_screen
+{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.menu_buttons
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 220px;
+}
+
+/* ---------------------------------------------------------------- Buttons */
+
+.menu_btn
+{
+    background: var(--btn-bg);
+    border: none;
+    border-radius: 6px;
+    color: var(--btn-text);
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.menu_btn:hover,
+.menu_btn:focus
+{
+    background: var(--btn-hover);
+    outline: none;
+    transform: scale(1.03);
+}
+
+.menu_btn.save
+{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* ---------------------------------------------------------------- Content screens (rules / settings) */
+
+.content_screen
+{
+    margin: 0 auto;
+    max-width: 680px;
+    min-height: 100vh;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.back_btn
+{
+    color: var(--back-colour);
+    display: inline-block;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.back_btn:hover,
+.back_btn:focus
+{
+    color: var(--logo-colour);
+    outline: none;
+}
+
+/* ---------------------------------------------------------------- Rules */
+
+.rules_content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rules_content section
+{
+    background: var(--content-bg);
+    border: 1px solid var(--rule-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+}
+
+.rules_content h2
+{
+    color: var(--logo-colour);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+}
+
+.rules_content p,
+.rules_content li
+{
+    color: var(--text);
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.rules_content ol,
+.rules_content ul
+{
+    padding-left: 1.4rem;
+}
+
+.rules_content li
+{
+    margin-bottom: 0.3rem;
+}
+
+/* ---------------------------------------------------------------- Settings */
+
+.settings_content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.settings_content section
+{
+    background: var(--content-bg);
+    border: 1px solid var(--rule-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+}
+
+.settings_content h2
+{
+    color: var(--logo-colour);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.setting_row
+{
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.setting_row label
+{
+    color: var(--text);
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-width: 70px;
+}
+
+.setting_row input
+{
+    background: white;
+    border: 1px solid var(--rule-border);
+    border-radius: 5px;
+    color: var(--text);
+    flex: 1;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.15s;
+}
+
+.setting_row input:focus
+{
+    border-color: var(--btn-bg);
+    outline: none;
+}
+
+#save_msg
+{
+    color: var(--btn-hover);
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.9rem;
+    min-height: 1.4em;
+    text-align: center;
+}

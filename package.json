@@ -3,9 +3,12 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "web-app/Module.js",
+  "main": "web-app/Azul.js",
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "ramda": "^0.32.0"
   },
