@@ -42,7 +42,7 @@ const make_empty_slot = function (label) {
 };
 
 // -------------------------------------------------------------------------
-// Rendering
+// rendering
 // -------------------------------------------------------------------------
 
 const render_factories = function () {
@@ -119,6 +119,20 @@ const render_centre = function () {
         const marker = document.createElement("div");
         marker.className = "tile " + marker_class;
         marker.setAttribute("aria-label", "First-player marker");
+
+        const tooltip = el("tooltip");
+        marker.onmouseenter = function () {
+            tooltip.textContent = "First-player marker — take this to go first next round (−1 point penalty)";
+            tooltip.classList.add("visible");
+        };
+        marker.onmousemove = function (event) {
+            tooltip.style.left = event.clientX + "px";
+            tooltip.style.top = event.clientY + "px";
+        };
+        marker.onmouseleave = function () {
+            tooltip.classList.remove("visible");
+        };
+
         container.append(marker);
     }
 
@@ -314,8 +328,22 @@ const render_all = function () {
     render_wall(1);
     render_floor(0);
     render_floor(1);
-    el("player0_score").textContent = game_state.players[0].score;
-    el("player1_score").textContent = game_state.players[1].score;
+    const s0 = el("player0_score");
+    const s1 = el("player1_score");
+    const old0 = s0.textContent;
+    const old1 = s1.textContent;
+    s0.textContent = game_state.players[0].score;
+    s1.textContent = game_state.players[1].score;
+    if (s0.textContent !== old0) {
+        s0.classList.remove("score_flash");
+        void s0.offsetWidth;
+        s0.classList.add("score_flash");
+    }
+    if (s1.textContent !== old1) {
+        s1.classList.remove("score_flash");
+        void s1.offsetWidth;
+        s1.classList.add("score_flash");
+    }
     render_turn_indicator();
 
     // Highlight the active player's sidebar.
@@ -361,6 +389,25 @@ const apply_draft = function (pattern_line) {
     }
 };
 
+const render_mini_wall = function (player_index, container_id) {
+    const container = el(container_id);
+    container.innerHTML = "";
+    const wall = game_state.players[player_index].wall;
+    R.range(0, 5).forEach(function (row) {
+        R.range(0, 5).forEach(function (col) {
+            const colour = Azul.wall_pattern[row][col];
+            const filled = wall[row][col];
+            const div = document.createElement("div");
+            div.className = "wall_slot " + colour_class[colour] + (
+                filled
+                ? " filled"
+                : " ghost"
+            );
+            container.append(div);
+        });
+    });
+};
+
 const show_result = function () {
     const winner = Azul.winner(game_state);
     const name0 = el("player0_name").value || "Player 1";
@@ -378,7 +425,9 @@ const show_result = function () {
     }
 
     el("result_message").textContent = message;
-    el("result_scores").textContent = `${name0}: ${score0} points — ${name1}: ${score1} points`;
+    el("result_scores").textContent = `${name0}: ${score0} pts — ${name1}: ${score1} pts`;
+    render_mini_wall(0, "result_board_0");
+    render_mini_wall(1, "result_board_1");
     el("result_dialog").showModal();
 };
 

@@ -10,7 +10,7 @@
             "request": "launch",
             "reAttach": true,
             "reloadOnAttach": true,
-            "file": "${workspaceFolder}/web-app/index.html",
+            "file": "${workspaceFolder}/web-app/menu.html",
             "preferences": {
                 "security.fileuri.strict_origin_policy": false
             },
@@ -27,8 +27,7 @@
                 "${workspaceFolder}/node_modules/**",
                 "<node_internals>/**"
             ],
-            // You'll need to change this line below to point to your module.
-            "program": "${workspaceFolder}/web-app/Module.js"
+            "program": "${workspaceFolder}/web-app/Azul.js"
         },
         {
             "name": "Generate Docs",

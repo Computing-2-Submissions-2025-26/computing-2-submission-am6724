@@ -25,14 +25,16 @@
         "default": {
             "staticFiles": {
                 "include": [
-                    "./.docs-template/custom.css"
+                    "./.docs-template/custom.css",
+                    "./.docs-template/menu_btn.js"
                 ]
             }
         }
     },
     "docdash": {
         "scripts": [
-            "custom.css"
+            "custom.css",
+            "menu_btn.js"
         ],
         "static": true,
         "sort": true,

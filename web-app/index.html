@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en-gb">
+<html lang="en-gb"> <!-- Indicates page is written in British English for accessibility-->
 <meta charset="utf-8">
 <title>Azul</title>
-<link rel="stylesheet" href="default.css">
+<link rel="stylesheet" href="default.css"> <!-- Imports stylesheet-->
 <script type="module" src="main.js"></script>
 
 <header>
-    <h1 id="title">Azul</h1>
+    <h1 id="title"><img src="./assets/azulLogo.png" alt="Azul"></h1>
 </header>
 
 <main>
@@ -51,8 +51,15 @@
 </aside>
 
 <dialog id="result_dialog" tabindex="0" aria-label="Game over">
-    <h2>Game Over</h2>
-    <p id="result_message"></p>
-    <p id="result_scores"></p>
-    <button id="play_again_btn" autofocus>Play Again</button>
+    <div id="result_board_0" class="result_board" aria-label="Player 1 final wall"></div>
+    <div class="result_content">
+        <h2>Game Over</h2>
+        <p id="result_message"></p>
+        <p id="result_scores"></p>
+        <button id="play_again_btn" autofocus>Play Again</button>
+    </div>
+    <div id="result_board_1" class="result_board" aria-label="Player 2 final wall"></div>
 </dialog>
+
+<div id="tooltip" aria-hidden="true"></div>
+<a href="menu.html" id="menu_btn" aria-label="Back to main menu">&#8592; Menu</a>

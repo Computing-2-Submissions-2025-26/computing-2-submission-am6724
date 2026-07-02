@@ -7,12 +7,16 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "jsdoc": "npx jsdoc -c jsdoc.json",
+    "jslint": "node node_modules/@jslint-org/jslint/jslint.mjs web-app/Azul.js web-app/main.js",
+    "start": "npx serve .",
     "test": "mocha"
   },
   "dependencies": {
     "ramda": "^0.32.0"
   },
   "devDependencies": {
+    "@jslint-org/jslint": "^2026.4.30",
     "docdash": "^2.0.2",
     "mocha": "^11.7.5"
   }

@@ -51,3 +51,8 @@ I'll run the same commands when I download your repos.
 - [ ] Push to GitHub.
 - [ ] Sync the changes.
 - [ ] Check submission on GitHub website.
+
+## Use of AI
+This project was developed with assistance from Claude (Anthropic) via Claude Code.
+AI was used to help with: CSS styling, JSDoc configuration, and debugging the game UI.
+All game logic in `Azul.js` was written and understood by myself.

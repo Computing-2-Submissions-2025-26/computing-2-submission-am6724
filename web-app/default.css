@@ -1,31 +1,36 @@
 :root
 {
     --header-height: 70px;
-    --sidebar-width: 340px;
-    --tile-size: 36px;
-    --wall-tile-size: 40px;
-    --gap: 6px;
+    --sidebar-width: 420px;
+    --tile-size: 42px;
+    --wall-tile-size: 42px;
+    --gap: 5px;
 
-    --colour-blue: #1a6cff;
-    --colour-yellow: #f5c800;
-    --colour-red: #cc2200;
-    --colour-black: #222222;
-    --colour-white: #e8e8e8;
+    --colour-blue: #3D5C7D;
+    --colour-yellow: #d0a2d9;
+    --colour-red: #f99683;
+    --colour-black: #ff9542;
+    --colour-white: #4a8c5c;
 
-    --bg-dark: #1a1a2e;
-    --bg-sidebar: #16213e;
-    --bg-main: #0f3460;
-    --bg-factory: #1e2d50;
-    --bg-centre: #1e2d50;
-    --accent: #e94560;
-    --text-light: #e0e0f0;
-    --text-muted: #8888aa;
-    --border: #2a3a5e;
-    --valid-glow: #00e5a0;
-    --selected-glow: #ffcc00;
+    --bg-dark: #ffffff;
+    --bg-sidebar: #d1ddff;
+    --bg-main: #DFCFB2;
+    --bg-factory: #ebdcc0;
+    --bg-centre: #DFCFB2;
+    --accent: #dddddd;
+    --text-light: #3D5C7D;
+    --text-muted: #3D5C7D;
+    --border: transparent;
+    --valid-glow: #c2d0cc;
+    --selected-glow: #d9fbff;
 
-    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    font-family: "Cinzel", "Georgia", serif;
     color: var(--text-light);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap");
+
+:root {
 }
 
 *
@@ -52,7 +57,7 @@ body
 
 header
 {
-    background: var(--bg-dark);
+    background: url("./assets/titleBar.png") center / cover no-repeat;
     border-bottom: 2px solid var(--border);
     grid-area: header;
     display: flex;
@@ -62,11 +67,13 @@ header
 
 #title
 {
-    color: var(--accent);
-    font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    line-height: 0;
+}
+
+#title img
+{
+    height: calc(var(--header-height) - 16px);
+    width: auto;
 }
 
 /* ------------------------------------------------------------------- Main */
@@ -93,15 +100,21 @@ main
 
 #factories
 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    justify-items: center;
 }
+
+.factory:nth-child(1) { grid-column: 1 / 3; }
+.factory:nth-child(2) { grid-column: 3 / 5; }
+.factory:nth-child(3) { grid-column: 5 / 7; }
+.factory:nth-child(4) { grid-column: 2 / 4; }
+.factory:nth-child(5) { grid-column: 4 / 6; }
 
 .factory
 {
-    background: var(--bg-factory);
+    background: var(--bg-factory) url("./assets/circle.png") center / cover no-repeat;
     border: 2px solid var(--border);
     border-radius: 50%;
     display: flex;
@@ -109,9 +122,9 @@ main
     gap: var(--gap);
     justify-content: center;
     align-items: center;
-    min-height: 100px;
+    min-height: 120px;
     padding: 0.5rem;
-    width: 100px;
+    width: 120px;
 }
 
 .factory.empty_factory
@@ -130,9 +143,10 @@ main
 
 #centre_area
 {
-    background: var(--bg-centre);
+    background: var(--bg-centre) url("./assets/playerBoard.png") center / cover no-repeat;
     border: 2px solid var(--border);
     border-radius: 8px;
+    margin-top: 10rem;
     padding: 0.5rem 0.75rem;
     text-align: center;
 }
@@ -202,16 +216,15 @@ main
     transform: none;
 }
 
-.tile.blue   { background: var(--colour-blue); }
-.tile.yellow { background: var(--colour-yellow); }
-.tile.red    { background: var(--colour-red); }
-.tile.black  { background: var(--colour-black); border: 1px solid #555; }
-.tile.white  { background: var(--colour-white); }
+.tile.blue   { background-image: url("./assets/blueTile.png"); background-size: cover; }
+.tile.yellow { background-image: url("./assets/yellowTile.png"); background-size: cover; }
+.tile.red    { background-image: url("./assets/redTile.png"); background-size: cover; }
+.tile.black  { background-image: url("./assets/purpleTile.png"); background-size: cover; }
+.tile.white  { background-image: url("./assets/greenTile.png"); background-size: cover; }
 
 .tile.marker
 {
     background: radial-gradient(circle, #ffffff 40%, #ddaa00 100%);
-    border: 2px dashed #ddaa00;
     cursor: default;
 }
 
@@ -219,18 +232,18 @@ main
 
 .sidebar
 {
-    background: var(--bg-sidebar);
+    background: var(--bg-sidebar) url("./assets/playerBoard.png") center / cover no-repeat;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.5rem;
     overflow-y: auto;
-    padding: 0.75rem 0.6rem;
+    padding: 1.5rem 0.4rem;
     transition: box-shadow 0.2s;
 }
 
 .sidebar.active_player
 {
-    box-shadow: inset 0 0 0 2px var(--accent);
+    box-shadow: 0 0 30px 8px rgba(255, 220, 120, 0.55);
 }
 
 #player0_sidebar { grid-area: player0; }
@@ -248,30 +261,28 @@ main
 {
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border);
     color: var(--text-light);
+    font-family: "Cinzel", "Georgia", serif;
     font-size: 1rem;
     font-weight: 700;
     max-width: 160px;
     outline: none;
-}
-
-.player_name_row input:focus
-{
-    border-bottom-color: var(--accent);
+    text-transform: uppercase;
 }
 
 .score_label
 {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    font-weight: 600;
     white-space: nowrap;
 }
 
 .score_label strong
 {
-    color: var(--accent);
-    font-size: 1.1rem;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 /* ---------------------------------------------------------- Pattern + Wall */
@@ -279,7 +290,7 @@ main
 .board_area
 {
     display: flex;
-    gap: 0.3rem;
+    gap: 0.2rem;
     justify-content: center;
 }
 
@@ -300,6 +311,7 @@ main
     cursor: default;
     display: flex;
     gap: 3px;
+    height: var(--wall-tile-size);
     justify-content: flex-end;
     padding: 2px;
     transition: border-color 0.15s, background 0.15s;
@@ -321,8 +333,8 @@ main
 
 .pattern_row .tile
 {
-    height: 28px;
-    width: 28px;
+    height: 30px;
+    width: 30px;
 }
 
 /* Floor-only button */
@@ -330,21 +342,20 @@ main
 .floor_only_btn
 {
     background: transparent;
-    border: 1px dashed var(--text-muted);
+    border: none;
     border-radius: 4px;
     color: var(--text-muted);
     cursor: pointer;
     font-size: 0.72rem;
     margin-top: 4px;
     padding: 3px 6px;
-    transition: color 0.1s, border-color 0.1s;
+    transition: color 0.1s;
     width: 100%;
 }
 
 .floor_only_btn:hover,
 .floor_only_btn:focus
 {
-    border-color: var(--accent);
     color: var(--accent);
     outline: none;
 }
@@ -380,10 +391,21 @@ main
 .wall_slot.blue   { background: var(--colour-blue); }
 .wall_slot.yellow { background: var(--colour-yellow); }
 .wall_slot.red    { background: var(--colour-red); }
-.wall_slot.black  { background: var(--colour-black); border: 1px solid #555; }
+.wall_slot.black  { background: var(--colour-black); }
 .wall_slot.white  { background: var(--colour-white); }
 
+.wall_slot.blue.filled   { background: url("./assets/blueTile.png") center / cover no-repeat; }
+.wall_slot.yellow.filled { background: url("./assets/yellowTile.png") center / cover no-repeat; }
+.wall_slot.red.filled    { background: url("./assets/redTile.png") center / cover no-repeat; }
+.wall_slot.black.filled  { background: url("./assets/purpleTile.png") center / cover no-repeat; }
+.wall_slot.white.filled  { background: url("./assets/greenTile.png") center / cover no-repeat; }
+
 /* -------------------------------------------------------------- Floor line */
+
+.floor_area
+{
+    margin-top: 0.5rem;
+}
 
 .floor_area h3
 {
@@ -412,8 +434,8 @@ main
 .floor_slot .tile
 {
     cursor: default;
-    height: 24px;
-    width: 24px;
+    height: 26px;
+    width: 26px;
 }
 
 .floor_slot .tile:hover,
@@ -436,12 +458,34 @@ main
 dialog
 {
     background: var(--bg-sidebar);
-    border: 2px solid var(--accent);
+    border: none;
     border-radius: 12px;
     box-shadow: 0 8px 40px rgba(0,0,0,0.7);
     color: var(--text-light);
-    padding: 2rem 3rem;
+    max-width: 90vw;
+    padding: 2rem;
     text-align: center;
+}
+
+dialog[open]
+{
+    align-items: center;
+    animation: pulse 5s ease-in-out infinite;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    left: 50%;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes pulse
+{
+    0%, 100% { box-shadow: 0 8px 40px rgba(0,0,0,0.7); }
+    50%       { box-shadow: 0 8px 60px rgba(100,160,255,0.6), 0 0 40px rgba(100,160,255,0.3); }
 }
 
 dialog::backdrop
@@ -450,9 +494,17 @@ dialog::backdrop
     background: rgba(0,0,0,0.5);
 }
 
+.result_content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+}
+
 dialog h2
 {
-    color: var(--accent);
+    color: #3D5C7D;
     font-size: 2rem;
     letter-spacing: 0.1em;
     margin-bottom: 0.75rem;
@@ -465,13 +517,22 @@ dialog p
     line-height: 1.8;
 }
 
+.result_board
+{
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(5, 28px);
+    grid-template-rows: repeat(5, 28px);
+}
+
 #play_again_btn
 {
-    background: var(--accent);
+    background: #3D5C7D;
     border: none;
     border-radius: 6px;
     color: white;
     cursor: pointer;
+    font-family: "Cinzel", "Georgia", serif;
     font-size: 1rem;
     font-weight: 700;
     margin-top: 1.2rem;
@@ -482,6 +543,74 @@ dialog p
 #play_again_btn:hover,
 #play_again_btn:focus
 {
-    background: #ff6680;
+    background: #2a3f5c;
+    outline: none;
+}
+
+/* ----------------------------------------------------------- Score flash */
+
+@keyframes score_flash
+{
+    0%   { transform: scale(1); color: var(--text-light); }
+    50%  { transform: scale(1.4); color: #f4a623; }
+    100% { transform: scale(1); color: var(--text-light); }
+}
+
+.score_flash
+{
+    animation: score_flash 0.4s ease-out;
+}
+
+/* ------------------------------------------------------------------ Tooltip */
+
+#tooltip
+{
+    background: rgba(30, 20, 10, 0.88);
+    border-radius: 6px;
+    color: #f5e6c8;
+    font-family: "Cinzel", "Georgia", serif;
+    font-size: 0.75rem;
+    left: 0;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    max-width: 200px;
+    padding: 0.4rem 0.65rem;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transform: translate(14px, 14px);
+    visibility: hidden;
+    z-index: 999;
+}
+
+#tooltip.visible
+{
+    visibility: visible;
+}
+
+/* --------------------------------------------------------------- Menu button */
+
+#menu_btn
+{
+    background: rgba(30, 20, 10, 0.75);
+    border-radius: 8px;
+    bottom: 1.2rem;
+    color: #f5e6c8;
+    font-family: "Cinzel", "Georgia", serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    right: 1.2rem;
+    text-decoration: none;
+    transition: background 0.15s;
+    z-index: 10;
+}
+
+#menu_btn:hover,
+#menu_btn:focus
+{
+    background: rgba(30, 20, 10, 0.95);
     outline: none;
 }

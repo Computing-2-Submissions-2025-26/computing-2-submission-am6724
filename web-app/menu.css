@@ -11,8 +11,10 @@
     --content-bg: #e8ecef;
     --rule-border: #c0cad0;
 
-    font-family: "Georgia", "Times New Roman", serif;
+    font-family: "Cinzel", "Georgia", serif;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap");
 
 *
 {
@@ -31,18 +33,26 @@ body
 
 .logo
 {
-    color: var(--logo-colour);
-    font-size: 4.5rem;
-    font-style: italic;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    line-height: 0;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
 }
 
-.logo.small
+.logo img
 {
-    font-size: 2.8rem;
+    animation: bob 1.2s ease-in-out infinite;
+    height: 120px;
+    width: auto;
+}
+
+@keyframes bob
+{
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+
+.logo.small img
+{
+    height: 70px;
     margin-bottom: 1.5rem;
 }
 
